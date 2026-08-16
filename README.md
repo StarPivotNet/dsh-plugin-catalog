@@ -31,7 +31,7 @@ Do not list git-only checkouts, skills, or packages that need a hand-written `co
 
 ## First shelf
 
-- `@starpivot/dsh-plugin-marketplace@0.1.2`
+- `@starpivot/dsh-plugin-marketplace@0.1.3`
 - `@dsh-plugin/dsh-auxiliary@0.4.2`
 - `@dsh-plugin/dsh-thought-buddy@0.1.1`
 - `dsh-find-plugin@0.3.6`
