@@ -3,6 +3,14 @@
   "title": "StarPivot",
   "plugins": [
     {
+      "name": "@starpivot/dsh-plugin-marketplace",
+      "version": "0.1.0",
+      "title": "Plugin marketplace",
+      "description": "Replace the shipped Plugins settings page with Discover, installed plugins, and configuration.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public",
+      "kind": "bundle"
+    },
+    {
       "name": "@dsh-plugin/dsh-auxiliary",
       "version": "0.4.2",
       "title": "Auxiliary models",
