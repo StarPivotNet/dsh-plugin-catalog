@@ -11,7 +11,6 @@ concurrency:
 
 permissions:
   contents: write
-  members: read
 
 jobs:
   refresh:
@@ -27,34 +26,30 @@ jobs:
           node scripts/refresh-catalog-versions.mjs 2>&1 | tee refresh.log
       - name: Commit catalog.json when a pin moved
         run: |
-          set -o pipefail
-          {
-            git add catalog.json
-            if git diff --cached --quiet; then
-              echo 'No catalog.json changes'
-              exit 0
-            fi
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m "$(cat <<'EOF'
+          git add catalog.json
+          if git diff --cached --quiet; then
+            echo 'No catalog.json changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "$(cat <<'EOF'
           chore(catalog): pin published npm versions
 
           Scheduled refresh of catalog.json against each listing's npm latest
           tag. Title, description, homepage, and kind are left unchanged.
           EOF
           )"
-            git push
-          } 2>&1 | tee commit.log
+          git push
       - name: Prepare Chinese HTML failure mail
         if: failure()
         id: mail
         run: |
-          {
-            test -f refresh.log && { echo '--- 刷新 ---'; cat refresh.log; }
-            test -f commit.log && { echo '--- 提交 ---'; cat commit.log; }
-          } > failure.log || true
-          REFRESH_FAILURE_LOG="$(cat failure.log 2>/dev/null || true)"
-          export REFRESH_FAILURE_LOG
+          if [ -f refresh.log ]; then
+            export REFRESH_FAILURE_LOG="$(cat refresh.log)"
+          else
+            export REFRESH_FAILURE_LOG='提交 catalog.json 或推送到 main 失败。请打开这次运行查看 Commit 步骤日志。'
+          fi
           node scripts/notify-refresh-failure.mjs
       - name: Email StarPivotNet members
         if: failure() && steps.mail.outputs.to != ''
