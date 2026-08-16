@@ -1,5 +1,0 @@
-# Extra inboxes for the refresh-failure mail. GitHub profile emails are
-# usually private, so keep the org members' deliverable addresses here.
-# One address per line. Blank lines and # comments are ignored.
-523528830@qq.com
-445714414@qq.com

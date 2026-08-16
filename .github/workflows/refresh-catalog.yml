@@ -11,6 +11,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   refresh:
@@ -41,9 +42,8 @@ jobs:
           EOF
           )"
           git push
-      - name: Prepare Chinese HTML failure mail
+      - name: Open a GitHub Issue for StarPivotNet members
         if: failure()
-        id: mail
         run: |
           if [ -f refresh.log ]; then
             export REFRESH_FAILURE_LOG="$(cat refresh.log)"
@@ -51,17 +51,3 @@ jobs:
             export REFRESH_FAILURE_LOG='提交 catalog.json 或推送到 main 失败。请打开这次运行查看 Commit 步骤日志。'
           fi
           node scripts/notify-refresh-failure.mjs
-      - name: Email StarPivotNet members
-        if: failure() && steps.mail.outputs.to != ''
-        uses: dawidd6/action-send-mail@v4
-        with:
-          server_address: ${{ secrets.SMTP_HOST }}
-          server_port: ${{ vars.SMTP_PORT || 587 }}
-          secure: ${{ vars.SMTP_SECURE == 'true' }}
-          username: ${{ secrets.SMTP_USERNAME }}
-          password: ${{ secrets.SMTP_PASSWORD }}
-          from: ${{ secrets.SMTP_FROM }}
-          to: ${{ steps.mail.outputs.to }}
-          subject: ${{ steps.mail.outputs.subject }}
-          html_body: file://failure-mail.html
-          convert_markdown: false
