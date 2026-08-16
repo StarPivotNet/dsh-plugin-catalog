@@ -1,0 +1,41 @@
+name: Refresh catalog versions
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: refresh-catalog
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check listed packages against npm latest
+        run: node scripts/refresh-catalog-versions.mjs
+      - name: Commit catalog.json when a pin moved
+        run: |
+          git add catalog.json
+          if git diff --cached --quiet; then
+            echo 'No catalog.json changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "$(cat <<'EOF'
+          chore(catalog): pin published npm versions
+
+          Scheduled refresh of catalog.json against each listing's npm latest
+          tag. Title, description, homepage, and kind are left unchanged.
+          EOF
+          )"
+          git push

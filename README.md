@@ -29,9 +29,13 @@ Every entry must be an npm registry package that declares `dsh.bundle.patch`. Th
 
 Do not list git-only checkouts, skills, or packages that need a hand-written `cordis.patch.yml` after install.
 
+A scheduled GitHub Action checks each listed package against its npm `latest` tag every 30 minutes and pins `catalog.json` when that published version still declares `dsh.bundle.patch`. Title, description, homepage, and kind stay as written here. Run the workflow manually from the Actions tab to refresh without waiting.
+
 ## First shelf
 
-- `@starpivot/dsh-plugin-marketplace@0.1.4`
-- `@dsh-plugin/dsh-auxiliary@0.4.2`
-- `@dsh-plugin/dsh-thought-buddy@0.1.1`
-- `dsh-find-plugin@0.3.6`
+The live pins are in `catalog.json`. The scheduled Action rewrites only the `version` field.
+
+- `@starpivot/dsh-plugin-marketplace`
+- `@dsh-plugin/dsh-auxiliary`
+- `@dsh-plugin/dsh-thought-buddy`
+- `dsh-find-plugin`

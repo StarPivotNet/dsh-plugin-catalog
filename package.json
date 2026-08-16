@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/refresh-catalog-versions.spec.mjs",
+    "refresh": "node scripts/refresh-catalog-versions.mjs"
+  }
+}
