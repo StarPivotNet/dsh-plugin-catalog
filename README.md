@@ -33,7 +33,7 @@ A scheduled GitHub Action checks each listed package against its npm `latest` ta
 
 If that job fails, it opens a GitHub Issue (or comments on the open `catalog-refresh-failure` Issue) and @-mentions every StarPivotNet member. GitHub then emails those members through their own notification settings. Keep Issue email notifications on if you want that inbox copy.
 
-GitHub cannot send a custom HTML mail. To send one through Cloudflare, deploy `cf-email-worker/` and set repository secrets `CF_NOTIFY_URL` and `CF_NOTIFY_TOKEN`. See [cf-email-worker/README.md](cf-email-worker/README.md).
+GitHub cannot send a custom HTML mail. To send one through Cloudflare on `fastaicode.top`, deploy `cf-email-worker/` and set repository secrets `CF_NOTIFY_URL=https://catalog-notify.fastaicode.top` and `CF_NOTIFY_TOKEN`. See [cf-email-worker/README.md](cf-email-worker/README.md).
 
 ## First shelf
 
