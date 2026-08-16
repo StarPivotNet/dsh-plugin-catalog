@@ -4,7 +4,7 @@ Official StarPivot marketplace catalog. The marketplace installer lives in `Star
 
 ## Architecture
 
-`catalog.json` is the only runtime artifact. The marketplace Host fetches it over HTTPS and parses marketplace protocol version 1. `.github/workflows/refresh-catalog.yml` runs `scripts/refresh-catalog-versions.mjs` every 30 minutes and on `workflow_dispatch`. The script reads each listing's npm `latest` tag and rewrites that row's `version` when the published manifest still declares `dsh.bundle.patch`. It does not add, remove, or rewrite title, description, homepage, or kind.
+`catalog.json` is the only runtime artifact. The marketplace Host fetches it over HTTPS and parses marketplace protocol version 1. `.github/workflows/refresh-catalog.yml` runs `scripts/refresh-catalog-versions.mjs` every 30 minutes and on `workflow_dispatch`. The script reads each listing's npm `latest` tag and rewrites that row's `version` and `updatedAt` when the published manifest still declares `dsh.bundle.patch`. `updatedAt` is the npm publish time of the pinned version. It does not add, remove, or rewrite title, description, homepage, or kind.
 
 A failed refresh or push opens or comments on a GitHub Issue labelled `catalog-refresh-failure` and @-mentions every StarPivotNet member (`scripts/notify-refresh-failure.mjs`). GitHub then emails each mentioned person through their notification settings. If repository secrets `CF_NOTIFY_URL` and `CF_NOTIFY_TOKEN` are set, the same failure also POSTs a Chinese HTML mail to the Cloudflare Email Worker in `cf-email-worker/`. GitHub cannot send that HTML itself. Members who only want the GitHub inbox copy must keep Issue email notifications on.
 
@@ -14,7 +14,7 @@ A failed refresh or push opens or comments on a GitHub Issue labelled `catalog-r
 - Pin the published version that was verified at listing time.
 - Keep `homepage` on `http:` or `https:`.
 - Duplicate package names are invalid.
-- A scheduled pin update is a version-only rewrite of an existing row.
+- A scheduled pin update rewrites only `version` and `updatedAt` on an existing row.
 
 ## Commands
 

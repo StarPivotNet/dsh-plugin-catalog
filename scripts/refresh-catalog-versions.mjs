@@ -2,7 +2,8 @@
 /**
  * Pin each catalog.json listing to the npm `latest` version when that
  * published manifest still declares `dsh.bundle.patch`. Title, description,
- * homepage, and kind stay as curated listing fields.
+ * homepage, and kind stay as curated listing fields. `updatedAt` is the
+ * npm publish time of that pinned version.
  */
 import { readFile, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
@@ -11,7 +12,8 @@ import { fileURLToPath } from 'node:url'
 const REGISTRY = 'https://registry.npmjs.org'
 const INSTALL_VERSION = /^(?:[0-9]+(?:\.[0-9A-Za-z-]+)*(?:[+.][0-9A-Za-z.-]+)*|[A-Za-z][0-9A-Za-z._-]*)$/
 
-/** @typedef {{ name: string, version: string, title: string, description: string, homepage: string, kind: string }} CatalogPlugin */
+/** @typedef {{ name: string, version: string, title: string, description: string, homepage: string, kind: string, updatedAt?: string }} CatalogPlugin */
+/** @typedef {{ version: string, updatedAt: string }} CatalogPin */
 /** @typedef {{ version: number, title?: string, plugins: CatalogPlugin[] }} CatalogDocument */
 
 /**
@@ -32,7 +34,7 @@ export function registryPackumentUrl(name) {
 
 /**
  * @param {unknown} packument
- * @returns {{ ok: true, version: string } | { ok: false, message: string }}
+ * @returns {{ ok: true, version: string, updatedAt: string } | { ok: false, message: string }}
  */
 export function latestBundleVersion(packument) {
   if (packument === null || typeof packument !== 'object' || Array.isArray(packument)) {
@@ -67,21 +69,33 @@ export function latestBundleVersion(packument) {
   if (typeof patch !== 'string' || patch.trim().length === 0) {
     return { ok: false, message: `${latest} does not declare dsh.bundle.patch` }
   }
-  return { ok: true, version: latest }
+  const times = document.time
+  if (times === null || typeof times !== 'object' || Array.isArray(times)) {
+    return { ok: false, message: `${latest} is missing a publish time` }
+  }
+  const stamp = /** @type {Record<string, unknown>} */ (times)[latest]
+  if (typeof stamp !== 'string' || !Number.isFinite(Date.parse(stamp))) {
+    return { ok: false, message: `${latest} is missing a publish time` }
+  }
+  return { ok: true, version: latest, updatedAt: new Date(stamp).toISOString() }
 }
 
 /**
  * @param {CatalogDocument} catalog
- * @param {ReadonlyMap<string, string>} versions
+ * @param {ReadonlyMap<string, CatalogPin>} pins
  * @returns {{ catalog: CatalogDocument, changed: string[] }}
  */
-export function pinCatalogVersions(catalog, versions) {
+export function pinCatalogVersions(catalog, pins) {
   const changed = []
   const plugins = catalog.plugins.map((plugin) => {
-    const next = versions.get(plugin.name)
-    if (next === undefined || next === plugin.version) return plugin
-    changed.push(`${plugin.name} ${plugin.version} -> ${next}`)
-    return { ...plugin, version: next }
+    const next = pins.get(plugin.name)
+    if (next === undefined) return plugin
+    const versionChanged = next.version !== plugin.version
+    const updatedChanged = next.updatedAt !== plugin.updatedAt
+    if (!versionChanged && !updatedChanged) return plugin
+    if (versionChanged) changed.push(`${plugin.name} ${plugin.version} -> ${next.version}`)
+    else changed.push(`${plugin.name} updatedAt ${plugin.updatedAt ?? '(none)'} -> ${next.updatedAt}`)
+    return { ...plugin, version: next.version, updatedAt: next.updatedAt }
   })
   return { catalog: { ...catalog, plugins }, changed }
 }
@@ -129,8 +143,8 @@ export async function fetchPackument(name, fetchImpl = fetch) {
  * @returns {Promise<{ catalog: CatalogDocument, changed: string[] }>}
  */
 export async function refreshCatalog(catalog, fetchImpl = fetch) {
-  /** @type {Map<string, string>} */
-  const versions = new Map()
+  /** @type {Map<string, CatalogPin>} */
+  const pins = new Map()
   const errors = []
   for (const plugin of catalog.plugins) {
     try {
@@ -139,7 +153,7 @@ export async function refreshCatalog(catalog, fetchImpl = fetch) {
         errors.push(`${plugin.name}: ${resolved.message}`)
         continue
       }
-      versions.set(plugin.name, resolved.version)
+      pins.set(plugin.name, { version: resolved.version, updatedAt: resolved.updatedAt })
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
       errors.push(`${plugin.name}: ${message}`)
@@ -148,7 +162,7 @@ export async function refreshCatalog(catalog, fetchImpl = fetch) {
   if (errors.length > 0) {
     throw new Error(`failed to refresh ${String(errors.length)} listing(s):\n${errors.join('\n')}`)
   }
-  return pinCatalogVersions(catalog, versions)
+  return pinCatalogVersions(catalog, pins)
 }
 
 /**
