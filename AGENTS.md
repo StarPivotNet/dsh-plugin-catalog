@@ -15,4 +15,6 @@ Official StarPivot marketplace catalog. The marketplace installer lives in `Star
 
 ## Commands
 
-There is no build. Edit `catalog.json`, commit, and push `main`.
+There is no build. Edit `catalog.json`, commit, and push `main` in the same turn as the listing change. Discover reads the raw `main` file; an unpushed edit is invisible.
+
+When a package in `StarPivotNet/dsh-plugins-public` is published with a new name, version, title, or description, update this catalog immediately. Do not wait for a later cleanup pass.
