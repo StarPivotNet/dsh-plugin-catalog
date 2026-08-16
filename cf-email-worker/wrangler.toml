@@ -16,3 +16,4 @@ routes = [
 
 [[send_email]]
 name = "SEB"
+allowed_destination_addresses = ["523528830@qq.com", "445714414@qq.com"]

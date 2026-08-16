@@ -47,26 +47,36 @@ export default {
     if (!EMAIL.test(from) || to.length === 0 || to.some(address => !EMAIL.test(address))) {
       return new Response('MAIL_FROM / MAIL_TO are not configured', { status: 500 })
     }
-    const { EmailMessage } = await import('cloudflare:email')
-    const rfc822 = [
-      `From: ${from}`,
-      `To: ${to.join(', ')}`,
-      `Subject: =?UTF-8?B?${btoa(unescape(encodeURIComponent(subject)))}?=`,
-      'MIME-Version: 1.0',
-      'Content-Type: multipart/alternative; boundary="dsh-catalog"',
-      '',
-      '--dsh-catalog',
-      'Content-Type: text/plain; charset=UTF-8',
-      '',
-      text,
-      '--dsh-catalog',
-      'Content-Type: text/html; charset=UTF-8',
-      '',
-      html,
-      '--dsh-catalog--',
-      '',
-    ].join('\r\n')
-    await env.SEB.send(new EmailMessage(from, to[0], rfc822))
+    if (env.SEB === undefined || typeof env.SEB.send !== 'function') {
+      return new Response('SEB send_email binding is missing', { status: 500 })
+    }
+    try {
+      const { EmailMessage } = await import('cloudflare:email')
+      const rfc822 = [
+        `From: ${from}`,
+        `To: ${to.join(', ')}`,
+        `Subject: =?UTF-8?B?${btoa(unescape(encodeURIComponent(subject)))}?=`,
+        'MIME-Version: 1.0',
+        'Content-Type: multipart/alternative; boundary="dsh-catalog"',
+        '',
+        '--dsh-catalog',
+        'Content-Type: text/plain; charset=UTF-8',
+        '',
+        text,
+        '--dsh-catalog',
+        'Content-Type: text/html; charset=UTF-8',
+        '',
+        html,
+        '--dsh-catalog--',
+        '',
+      ].join('\r\n')
+      for (const address of to) {
+        await env.SEB.send(new EmailMessage(from, address, rfc822))
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error)
+      return new Response(`send failed: ${message}`, { status: 500 })
+    }
     return new Response('sent', { status: 200 })
   },
 }
