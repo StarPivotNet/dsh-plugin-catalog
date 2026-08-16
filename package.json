@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node scripts/refresh-catalog-versions.spec.mjs",
+    "test": "node scripts/refresh-catalog-versions.spec.mjs && node scripts/notify-refresh-failure.spec.mjs",
     "refresh": "node scripts/refresh-catalog-versions.mjs"
   }
 }

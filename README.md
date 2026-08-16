@@ -31,6 +31,8 @@ Do not list git-only checkouts, skills, or packages that need a hand-written `co
 
 A scheduled GitHub Action checks each listed package against its npm `latest` tag every 30 minutes and pins `catalog.json` when that published version still declares `dsh.bundle.patch`. Title, description, homepage, and kind stay as written here. Run the workflow manually from the Actions tab to refresh without waiting.
 
+If that job fails, it emails StarPivotNet members a Chinese HTML notice with the run link and the failure log. Recipients are each member's public GitHub profile email plus `notify-recipients.txt`. Configure repository secrets `SMTP_HOST`, `SMTP_USERNAME`, `SMTP_PASSWORD`, and `SMTP_FROM`. Optional repository variables: `SMTP_PORT` (default `587`) and `SMTP_SECURE` (`true` for port 465).
+
 ## First shelf
 
 The live pins are in `catalog.json`. The scheduled Action rewrites only the `version` field.
