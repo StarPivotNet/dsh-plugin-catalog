@@ -4,10 +4,10 @@
   "plugins": [
     {
       "name": "@starpivot/dsh-plugin-marketplace",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "title": "Plugin marketplace",
       "description": "Replace the shipped Plugins settings page with Discover, installed plugins, and configuration.",
-      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/plugin-marketplace",
       "kind": "bundle"
     },
     {
