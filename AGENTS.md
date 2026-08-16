@@ -6,7 +6,7 @@ Official StarPivot marketplace catalog. The marketplace installer lives in `Star
 
 `catalog.json` is the only runtime artifact. The marketplace Host fetches it over HTTPS and parses marketplace protocol version 1. `.github/workflows/refresh-catalog.yml` runs `scripts/refresh-catalog-versions.mjs` every 30 minutes and on `workflow_dispatch`. The script reads each listing's npm `latest` tag and rewrites that row's `version` when the published manifest still declares `dsh.bundle.patch`. It does not add, remove, or rewrite title, description, homepage, or kind.
 
-A failed refresh or push opens or comments on a GitHub Issue labelled `catalog-refresh-failure` and @-mentions every StarPivotNet member (`scripts/notify-refresh-failure.mjs`). GitHub then emails each mentioned person through their notification settings. There is no SMTP path and no custom HTML mail. Members who want inbox mail must keep GitHub email notifications on for Issues.
+A failed refresh or push opens or comments on a GitHub Issue labelled `catalog-refresh-failure` and @-mentions every StarPivotNet member (`scripts/notify-refresh-failure.mjs`). GitHub then emails each mentioned person through their notification settings. If repository secrets `CF_NOTIFY_URL` and `CF_NOTIFY_TOKEN` are set, the same failure also POSTs a Chinese HTML mail to the Cloudflare Email Worker in `cf-email-worker/`. GitHub cannot send that HTML itself. Members who only want the GitHub inbox copy must keep Issue email notifications on.
 
 ## Conventions
 

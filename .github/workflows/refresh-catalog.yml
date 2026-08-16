@@ -42,8 +42,11 @@ jobs:
           EOF
           )"
           git push
-      - name: Open a GitHub Issue for StarPivotNet members
+      - name: Notify StarPivotNet members
         if: failure()
+        env:
+          CF_NOTIFY_URL: ${{ secrets.CF_NOTIFY_URL }}
+          CF_NOTIFY_TOKEN: ${{ secrets.CF_NOTIFY_TOKEN }}
         run: |
           if [ -f refresh.log ]; then
             export REFRESH_FAILURE_LOG="$(cat refresh.log)"

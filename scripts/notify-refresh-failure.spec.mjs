@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import {
-  buildFailureIssue, listOrgLogins, notifyFailureIssue, openFailureIssueNumber,
-  parseOrgMembers,
+  buildFailureIssue, buildFailureMail, listOrgLogins, notifyFailureIssue,
+  openFailureIssueNumber, parseOrgMembers, postCloudflareMail,
 } from './notify-refresh-failure.mjs'
 
 assert.deepEqual(parseOrgMembers([{ login: 'cat7street' }]), [{ login: 'cat7street' }])
@@ -92,5 +92,45 @@ assert.deepEqual(commented, {
   number: 7,
   url: 'https://github.com/StarPivotNet/dsh-plugin-catalog/issues/7',
 })
+
+const mail = buildFailureMail({
+  repository: 'StarPivotNet/dsh-plugin-catalog',
+  runUrl: 'https://github.com/StarPivotNet/dsh-plugin-catalog/actions/runs/1',
+  workflow: 'Refresh catalog versions',
+  refName: 'main',
+  sha: 'abc123',
+  eventName: 'schedule',
+  actor: 'github-actions[bot]',
+  log: 'failed to refresh 1 listing(s):\n@scope/pkg: <boom>',
+})
+assert.match(mail.subject, /插件目录刷新失败/)
+assert.match(mail.html, /lang="zh-CN"/)
+assert.match(mail.html, /定时刷新 catalog\.json 失败/)
+assert.match(mail.html, /&lt;boom&gt;/)
+assert.doesNotMatch(mail.html, /<boom>/)
+
+let posted
+await postCloudflareMail({
+  url: 'https://notify.example.workers.dev/mail',
+  token: 'secret',
+  mail,
+  fetchImpl: async (url, init) => {
+    posted = { url: String(url), init }
+    return { ok: true, async text() { return '' } }
+  },
+})
+assert.equal(posted.url, 'https://notify.example.workers.dev/mail')
+assert.equal(posted.init.headers.authorization, 'Bearer secret')
+assert.match(JSON.parse(posted.init.body).html, /打开这次 GitHub Actions 运行/)
+
+await assert.rejects(
+  () => postCloudflareMail({
+    url: 'https://notify.example.workers.dev/mail',
+    token: 'secret',
+    mail,
+    fetchImpl: async () => ({ ok: false, status: 401, async text() { return 'nope' } }),
+  }),
+  /Cloudflare notify returned 401: nope/,
+)
 
 console.log('notify-refresh-failure checks passed')

@@ -1,0 +1,10 @@
+name = "dsh-plugin-catalog-notify"
+main = "src/index.js"
+compatibility_date = "2026-08-16"
+
+[vars]
+MAIL_FROM = "catalog@example.com"
+
+[[send_email]]
+name = "SEB"
+# Destination addresses must be allowed for this Worker in the Cloudflare dashboard.
