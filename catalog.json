@@ -33,6 +33,14 @@
       "description": "Search the GitHub dsh-plugin topic from inside the agent.",
       "homepage": "https://github.com/awesome-dsh-plugin/dsh-find-plugin",
       "kind": "bundle"
+    },
+    {
+      "name": "dsh-mnemon",
+      "version": "0.1.6",
+      "title": "Mnemon memory",
+      "description": "Local three-tier memory with a sidebar workbench. Requires the Mnemon CLI on the machine.",
+      "homepage": "https://github.com/omdsh-dev/dsh-mnemon",
+      "kind": "bundle"
     }
   ]
 }
