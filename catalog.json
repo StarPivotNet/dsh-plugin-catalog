@@ -54,7 +54,7 @@
       "description": "Import Cursor, Codex, and Claude Code conversations and skills into DeepSeek Harness.",
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/session-import",
       "kind": "bundle",
-      "updatedAt": "2026-08-17T00:00:00.000Z"
+      "updatedAt": "2026-08-17T00:43:41.195Z"
     }
   ]
 }
