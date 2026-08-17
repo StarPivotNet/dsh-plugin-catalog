@@ -46,6 +46,15 @@
       "homepage": "https://github.com/omdsh-dev/dsh-mnemon",
       "kind": "bundle",
       "updatedAt": "2026-08-16T08:46:05.805Z"
+    },
+    {
+      "name": "@starpivot/dsh-session-import",
+      "version": "0.1.0",
+      "title": "Session import",
+      "description": "Import Cursor, Codex, and Claude Code conversations and skills into DeepSeek Harness.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/session-import",
+      "kind": "bundle",
+      "updatedAt": "2026-08-17T00:00:00.000Z"
     }
   ]
 }

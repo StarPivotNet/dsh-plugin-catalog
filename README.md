@@ -45,3 +45,4 @@ The live pins are in `catalog.json`. The scheduled Action rewrites only `version
 - `@dsh-plugin/dsh-thought-buddy`
 - `dsh-find-plugin`
 - `dsh-mnemon`
+- `@starpivot/dsh-session-import`
