@@ -49,12 +49,12 @@
     },
     {
       "name": "@starpivot/dsh-session-import",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "title": "Session import",
       "description": "Import Cursor, Codex, and Claude Code conversations and skills from a Settings page.",
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/session-import",
       "kind": "bundle",
-      "updatedAt": "2026-08-17T00:52:40.158Z"
+      "updatedAt": "2026-08-17T21:19:49.166Z"
     },
     {
       "name": "@starpivot/dsh-better-sidebar",
