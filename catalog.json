@@ -55,6 +55,15 @@
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/session-import",
       "kind": "bundle",
       "updatedAt": "2026-08-17T00:52:40.158Z"
+    },
+    {
+      "name": "dsh-better-sidebar",
+      "version": "0.12.3",
+      "title": "Better sidebar",
+      "description": "A VS Code-like right sidebar with explorer, editor, terminal, Git, and browser, isolated per session.",
+      "homepage": "https://github.com/omdsh-dev/DSH-better-sidebar",
+      "kind": "bundle",
+      "updatedAt": "2026-08-16T16:36:13.509Z"
     }
   ]
 }
