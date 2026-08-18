@@ -58,12 +58,12 @@
     },
     {
       "name": "@starpivot/dsh-better-sidebar",
-      "version": "0.13.3",
+      "version": "0.13.4",
       "title": "Better sidebar",
       "description": "A VS Code-like right sidebar with explorer, editor, terminal, Git, and browser. Refresh sits in the top-right cluster only while the sidebar is open.",
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/better-sidebar",
       "kind": "bundle",
-      "updatedAt": "2026-08-18T05:02:30.953Z"
+      "updatedAt": "2026-08-18T05:09:24.622Z"
     }
   ]
 }
