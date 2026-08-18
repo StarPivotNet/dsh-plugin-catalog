@@ -49,12 +49,12 @@
     },
     {
       "name": "@starpivot/dsh-session-import",
-      "version": "0.1.14",
+      "version": "0.1.15",
       "title": "Session import",
-      "description": "Import Cursor, Codex, Claude Code, and Grok Build conversations, plus skills, memory files, and automations.",
+      "description": "Import Cursor, Codex, Claude Code, Grok Build, and ZCode conversations, plus skills, memory files, and automations.",
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/session-import",
       "kind": "bundle",
-      "updatedAt": "2026-08-18T18:36:41.402Z"
+      "updatedAt": "2026-08-18T18:55:34.483Z"
     },
     {
       "name": "@starpivot/dsh-better-sidebar",
