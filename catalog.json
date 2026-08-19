@@ -31,12 +31,12 @@
     },
     {
       "name": "dsh-find-plugin",
-      "version": "0.3.6",
+      "version": "0.3.7",
       "title": "Find plugins",
       "description": "Search the GitHub dsh-plugin topic from inside the agent.",
       "homepage": "https://github.com/awesome-dsh-plugin/dsh-find-plugin",
       "kind": "bundle",
-      "updatedAt": "2026-08-14T13:18:06.053Z"
+      "updatedAt": "2026-08-19T05:25:07.551Z"
     },
     {
       "name": "dsh-mnemon",
