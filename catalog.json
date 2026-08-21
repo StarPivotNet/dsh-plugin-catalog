@@ -64,6 +64,60 @@
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/better-sidebar",
       "kind": "bundle",
       "updatedAt": "2026-08-18T06:01:24.448Z"
+    },
+    {
+      "name": "@starpivot/dsh-enter-newline",
+      "version": "0.2.0",
+      "title": "Enter newline",
+      "description": "Composer Enter sends or inserts a newline, selectable in General Settings.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/enter-newline",
+      "kind": "bundle",
+      "updatedAt": "2026-08-21T20:56:52.667Z"
+    },
+    {
+      "name": "@starpivot/dsh-skill-router",
+      "version": "0.1.0",
+      "title": "Skill router",
+      "description": "Two-level skill catalog routing: show routers and standalone skills, keep routed sub-skills loadable by name.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/skill-router",
+      "kind": "bundle",
+      "updatedAt": "2026-08-21T20:56:55.226Z"
+    },
+    {
+      "name": "@starpivot/dsh-model-capabilities",
+      "version": "0.1.0",
+      "title": "Model capabilities",
+      "description": "Fill missing llm-pi-ai model capability fields from overrides, pi-ai catalogs, and models.dev.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/model-capabilities",
+      "kind": "bundle",
+      "updatedAt": "2026-08-21T20:56:57.593Z"
+    },
+    {
+      "name": "@starpivot/dsh-blank-session-gc",
+      "version": "0.1.0",
+      "title": "Blank session GC",
+      "description": "Keep at most one unused blank conversation and delete the rest from workspace accounts and JSONL logs.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/blank-session-gc",
+      "kind": "bundle",
+      "updatedAt": "2026-08-21T20:56:59.943Z"
+    },
+    {
+      "name": "@starpivot/dsh-busy-enter-steer",
+      "version": "0.1.0",
+      "title": "Busy Enter steer",
+      "description": "Seed busy-state Enter to steer when the user has not chosen queue or steer.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/busy-enter-steer",
+      "kind": "bundle",
+      "updatedAt": "2026-08-21T20:57:02.659Z"
+    },
+    {
+      "name": "@starpivot/dsh-agent-teams",
+      "version": "0.2.0",
+      "title": "AgentTeams",
+      "description": "Durable multi-agent team orchestration with a task DAG and read-only role isolation.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/agent-teams",
+      "kind": "bundle",
+      "updatedAt": "2026-08-21T21:00:53.761Z"
     }
   ]
 }
