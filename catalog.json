@@ -85,12 +85,12 @@
     },
     {
       "name": "@starpivot/dsh-model-capabilities",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "title": "Model capabilities",
       "description": "Fill missing llm-pi-ai model capability fields from overrides, pi-ai catalogs, and models.dev.",
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/model-capabilities",
       "kind": "bundle",
-      "updatedAt": "2026-08-21T20:56:57.593Z"
+      "updatedAt": "2026-08-22T16:11:10.139Z"
     },
     {
       "name": "@starpivot/dsh-blank-session-gc",
@@ -112,12 +112,12 @@
     },
     {
       "name": "@starpivot/dsh-agent-teams",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "title": "AgentTeams",
       "description": "Durable multi-agent team orchestration with a task DAG and read-only role isolation.",
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/agent-teams",
       "kind": "bundle",
-      "updatedAt": "2026-08-21T21:00:53.761Z"
+      "updatedAt": "2026-08-22T16:12:44.352Z"
     },
     {
       "name": "@starpivot/dsh-file-drop",
@@ -127,6 +127,42 @@
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/file-drop",
       "kind": "bundle",
       "updatedAt": "2026-08-22T06:43:21.070Z"
+    },
+    {
+      "name": "@starpivot/dsh-session-rehome",
+      "version": "0.2.0",
+      "title": "Session rehome",
+      "description": "Rehome the current conversation onto an existing project directory, with ask or auto mode.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/session-rehome",
+      "kind": "bundle",
+      "updatedAt": "2026-08-22T16:11:14.034Z"
+    },
+    {
+      "name": "@starpivot/dsh-restart-continue",
+      "version": "0.1.0",
+      "title": "Restart continue",
+      "description": "After a host restart, cold-resume user root conversations interrupted in the last 24 hours.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/restart-continue",
+      "kind": "bundle",
+      "updatedAt": "2026-08-22T16:11:18.048Z"
+    },
+    {
+      "name": "@starpivot/dsh-session-title",
+      "version": "0.1.0",
+      "title": "Session title",
+      "description": "Settings for the auto-title prompt and an optional title model.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/session-title",
+      "kind": "bundle",
+      "updatedAt": "2026-08-22T16:11:22.720Z"
+    },
+    {
+      "name": "@starpivot/dsh-kanban",
+      "version": "0.3.0",
+      "title": "Kanban",
+      "description": "Sidebar task board over existing conversations, with host-persisted columns.",
+      "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/kanban",
+      "kind": "bundle",
+      "updatedAt": "2026-08-22T16:12:23.072Z"
     }
   ]
 }
