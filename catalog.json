@@ -13,21 +13,21 @@
     },
     {
       "name": "@dsh-plugin/dsh-auxiliary",
-      "version": "0.5.1",
+      "version": "0.6.2",
       "title": "Auxiliary models",
       "description": "Dedicated model routes for image analysis and context compaction.",
       "homepage": "https://github.com/dsh-plugins/dsh-auxiliary",
       "kind": "bundle",
-      "updatedAt": "2026-08-21T06:08:10.008Z"
+      "updatedAt": "2026-08-28T22:57:49.611Z"
     },
     {
       "name": "@dsh-plugin/dsh-thought-buddy",
-      "version": "0.3.0",
+      "version": "0.3.2",
       "title": "Thought buddy",
       "description": "A GrokBot-style animated avatar in front of the Deep diving status line.",
       "homepage": "https://github.com/dsh-plugins/dsh-thought-buddy",
       "kind": "bundle",
-      "updatedAt": "2026-08-24T15:29:09.350Z"
+      "updatedAt": "2026-08-28T22:57:40.804Z"
     },
     {
       "name": "dsh-find-plugin",
