@@ -22,12 +22,12 @@
     },
     {
       "name": "@dsh-plugin/dsh-thought-buddy",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "title": "Thought buddy",
       "description": "A GrokBot-style animated avatar in front of the Deep diving status line.",
       "homepage": "https://github.com/dsh-plugins/dsh-thought-buddy",
       "kind": "bundle",
-      "updatedAt": "2026-08-28T22:57:40.804Z"
+      "updatedAt": "2026-09-03T06:36:55.739Z"
     },
     {
       "name": "dsh-find-plugin",
