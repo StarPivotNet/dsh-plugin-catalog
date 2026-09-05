@@ -121,12 +121,12 @@
     },
     {
       "name": "@starpivot/dsh-file-drop",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "title": "File drop",
       "description": "Drop any non-image file into the composer as a path. Files over 256KB insert a brief summary only.",
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/file-drop",
       "kind": "bundle",
-      "updatedAt": "2026-08-22T06:43:21.070Z"
+      "updatedAt": "2026-09-05T12:56:57.316Z"
     },
     {
       "name": "@starpivot/dsh-session-rehome",
