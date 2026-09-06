@@ -13,12 +13,12 @@
     },
     {
       "name": "@dsh-plugin/dsh-auxiliary",
-      "version": "0.6.3",
+      "version": "0.6.4",
       "title": "Auxiliary models",
       "description": "Dedicated model routes for image analysis and context compaction.",
       "homepage": "https://github.com/dsh-plugins/dsh-auxiliary",
       "kind": "bundle",
-      "updatedAt": "2026-08-29T02:42:30.504Z"
+      "updatedAt": "2026-09-06T08:11:21.121Z"
     },
     {
       "name": "@dsh-plugin/dsh-thought-buddy",
