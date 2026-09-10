@@ -163,6 +163,15 @@
       "homepage": "https://github.com/StarPivotNet/dsh-plugins-public/tree/main/packages/kanban",
       "kind": "bundle",
       "updatedAt": "2026-08-22T16:12:23.072Z"
+    },
+    {
+      "name": "dsh-notify-me",
+      "version": "1.1.3",
+      "title": "Notify me",
+      "description": "Desktop notifications, sounds and a tab-title marker when the agent needs your input or a reply finishes in the background.",
+      "homepage": "https://github.com/chromoany/dsh-notify-me",
+      "kind": "bundle",
+      "updatedAt": "2026-09-09T14:42:20.034Z"
     }
   ]
 }
