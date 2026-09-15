@@ -166,12 +166,12 @@
     },
     {
       "name": "dsh-notify-me",
-      "version": "1.1.4",
+      "version": "1.1.5",
       "title": "Notify me",
       "description": "Desktop notifications, sounds and a tab-title marker when the agent needs your input or a reply finishes in the background.",
       "homepage": "https://github.com/chromoany/dsh-notify-me",
       "kind": "bundle",
-      "updatedAt": "2026-09-13T15:19:32.193Z"
+      "updatedAt": "2026-09-15T11:11:52.195Z"
     }
   ]
 }
