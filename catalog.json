@@ -40,12 +40,12 @@
     },
     {
       "name": "dsh-mnemon",
-      "version": "0.5.32",
+      "version": "0.5.33",
       "title": "Mnemon memory",
       "description": "Local three-tier memory with a sidebar workbench. Requires the Mnemon CLI on the machine.",
       "homepage": "https://github.com/omdsh-dev/dsh-mnemon",
       "kind": "bundle",
-      "updatedAt": "2026-10-17T19:39:18.140Z"
+      "updatedAt": "2026-10-19T19:53:49.996Z"
     },
     {
       "name": "@starpivot/dsh-session-import",
