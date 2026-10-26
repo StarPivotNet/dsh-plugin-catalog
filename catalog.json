@@ -172,6 +172,15 @@
       "homepage": "https://github.com/chromoany/dsh-notify-me",
       "kind": "bundle",
       "updatedAt": "2026-10-24T03:47:22.856Z"
+    },
+    {
+      "name": "dsh-mcp-tools",
+      "version": "1.0.2",
+      "title": "MCP tools manager",
+      "description": "Manage MCP servers and their tools inside DeepSeek Harness: streamable-HTTP or stdio, Postman-style request headers, connectivity test before saving, and per-tool toggles so disabled tools never reach the model.",
+      "homepage": "https://github.com/hxlog/dsh-mcp-tools",
+      "kind": "bundle",
+      "updatedAt": "2026-10-21T10:00:09.471Z"
     }
   ]
 }
