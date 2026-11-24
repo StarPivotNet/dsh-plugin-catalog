@@ -40,12 +40,12 @@
     },
     {
       "name": "dsh-mnemon",
-      "version": "0.5.54",
+      "version": "0.5.55",
       "title": "Mnemon memory",
       "description": "Local three-tier memory with a sidebar workbench. Requires the Mnemon CLI on the machine.",
       "homepage": "https://github.com/omdsh-dev/dsh-mnemon",
       "kind": "bundle",
-      "updatedAt": "2026-11-23T18:32:30.752Z"
+      "updatedAt": "2026-11-24T18:36:07.776Z"
     },
     {
       "name": "@starpivot/dsh-session-import",
@@ -166,12 +166,12 @@
     },
     {
       "name": "dsh-notify-me",
-      "version": "1.24.0",
+      "version": "1.25.0",
       "title": "Notify me",
       "description": "Desktop notifications, sounds and a tab-title marker when the agent needs your input or a reply finishes in the background.",
       "homepage": "https://github.com/chromoany/dsh-notify-me",
       "kind": "bundle",
-      "updatedAt": "2026-11-24T03:14:36.233Z"
+      "updatedAt": "2026-11-24T17:03:50.488Z"
     }
   ]
 }
